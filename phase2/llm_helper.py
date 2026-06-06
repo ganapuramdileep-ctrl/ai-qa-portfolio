@@ -17,3 +17,13 @@ def get_completion(prompt, model="google/gemini-2.5-flash-lite", temperature=0):
         temperature=temperature
     )
     return response.choices[0].message.content
+
+def get_completion_from_messages(messages, model="google/gemini-2.5-flash-lite", temperature=0):
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=temperature, # this is the degree of randomness of the model's output
+    )
+    print(str(response.choices[0].message))
+    return response.choices[0].message.content
+
